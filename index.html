@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les' Aullian Achmad Argito · Operations &amp; Science Portfolio</title>
+<meta name="description" content="Portfolio for the Operations &amp; Science Intern role (CLIP): field operations with community partners, monitoring data, carbon stock calculation and SOPs, with three work samples built for this application.">
+<meta name="robots" content="noindex">
+<meta name="author" content="Les' Aullian Achmad Argito">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Les' Aullian Achmad Argito · Operations &amp; Science Portfolio">
+<meta property="og:description" content="Field operations, monitoring data, carbon stock and SOPs: the work behind each responsibility, plus three work samples built for this application.">
+<meta property="og:image" content="https://lesaullianachmadargito.github.io/blue-carbon-ops-portfolio/assets/img/og-card.jpg">
+<meta property="og:url" content="https://lesaullianachmadargito.github.io/blue-carbon-ops-portfolio/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0E5A78">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E5A78'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='27' text-anchor='middle' fill='%23fff'%3ELA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Each tab is its own view with its own colour, photo and layout; clicking the header switches all three. */
+  :root {
+    color-scheme: light;
+    --font: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+    --ink: #101828;
+    --ink-2: #344054;
+    --muted: #475467;
+    --line: #D0D5DD;
+    --panel: rgba(255, 255, 255, 0.92);
+    --max: 1120px;
+    --accent: #0E5A78;
+    --deep: #093F55;
+    --soft: #E3F1F6;
+    --tint: rgba(227, 241, 246, 0.55);
+  }
+  body[data-view="field"]   { --accent: #0E7C6B; --deep: #095A4D; --soft: #E1F3EF; --tint: rgba(225, 243, 239, 0.55); }
+  body[data-view="data"]    { --accent: #2A62B8; --deep: #1C4682; --soft: #E7EFFA; --tint: rgba(231, 239, 250, 0.55); }
+  body[data-view="science"] { --accent: #1F7A3E; --deep: #155A2C; --soft: #E4F3E8; --tint: rgba(228, 243, 232, 0.55); }
+  body[data-view="sop"]     { --accent: #B45309; --deep: #7C3A06; --soft: #FDF0E1; --tint: rgba(253, 240, 225, 0.55); }
+
+  *, *::before, *::after { box-sizing: border-box; letter-spacing: normal; }
+  html { background: #fff; -webkit-text-size-adjust: 100%; scroll-padding-top: 86px; }
+  body { margin: 0; color: var(--ink); font: 400 16px/1.65 var(--font); -webkit-font-smoothing: antialiased; background: transparent; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--deep); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  h1, h2, h3, h4 { margin: 0; line-height: 1.25; font-weight: 800; color: var(--ink); }
+  p { margin: 0 0 12px; }
+  p:last-child { margin-bottom: 0; }
+  b, strong { font-weight: 700; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 22px; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 12px; background: #fff; border: 2px solid var(--accent); padding: 8px 12px; z-index: 90; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  /* ---------- faded photo behind every view ---------- */
+  .stage { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: #fff; }
+  .stage .bg { position: absolute; inset: -3%; background-size: cover; background-position: center; opacity: 0;
+               transform: scale(1.05); transition: opacity 0.8s ease, transform 6s ease; }
+  .stage .bg.on { opacity: 0.26; transform: scale(1); }
+  .stage .veil { position: absolute; inset: 0;
+                 background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.45) 55%, rgba(255,255,255,0.7) 100%); }
+  .stage .tint { position: absolute; inset: 0; background: var(--tint); transition: background-color 0.6s ease; mix-blend-mode: multiply; }
+
+  /* ---------- header: tabs that switch the whole view ---------- */
+  .top { position: sticky; top: 0; z-index: 50; background: var(--accent); color: #fff;
+         transition: background-color 0.45s ease; box-shadow: 0 6px 24px rgba(16, 24, 40, 0.12); }
+  .top-in { display: flex; align-items: center; gap: 18px; min-height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; white-space: nowrap; font-weight: 800; font-size: 15px; }
+  .brand:hover { color: #fff; }
+  .brand .mono { width: 34px; height: 34px; border-radius: 10px; background: #fff; color: var(--accent); display: grid; place-items: center;
+                 font-size: 14px; font-weight: 800; transition: color 0.45s ease; }
+  .tabs { position: relative; display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; padding: 10px 2px; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { position: relative; z-index: 1; display: block; white-space: nowrap; color: rgba(255, 255, 255, 0.9); text-decoration: none;
+         font-weight: 600; font-size: 14.5px; padding: 8px 14px; border-radius: 999px; transition: color 0.3s ease, background-color 0.3s ease; }
+  .tab:hover { color: #fff; background: rgba(255, 255, 255, 0.14); }
+  .tab[aria-current="page"] { color: var(--deep); background: transparent; font-weight: 800; }
+  .tabs .ink { position: absolute; z-index: 0; top: 10px; height: calc(100% - 20px); left: 0; width: 0; border-radius: 999px; background: #fff;
+               box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16); transition: left 0.42s cubic-bezier(.3,.8,.3,1), width 0.42s cubic-bezier(.3,.8,.3,1); }
+
+  /* ---------- views ---------- */
+  .view { padding: 46px 0 64px; }
+  .js .view { animation: rise 0.55s ease both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .view-head { background: var(--panel); border: 1px solid var(--line); border-top: 6px solid var(--accent); border-radius: 18px;
+               padding: 26px 30px; margin-bottom: 26px; box-shadow: 0 10px 30px rgba(16, 24, 40, 0.06); transition: border-color 0.45s ease; }
+  .view-head h1, .view-head h2 { font-size: clamp(27px, 3.6vw, 40px); color: var(--deep); }
+  .view-head .lede { font-size: 18px; color: var(--ink-2); margin-top: 12px; max-width: 880px; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px 26px; box-shadow: 0 6px 20px rgba(16, 24, 40, 0.05); }
+  .panel h3 { font-size: 20px; margin-bottom: 10px; color: var(--deep); }
+  .panel h4 { font-size: 16px; margin-bottom: 6px; color: var(--deep); }
+  .meta { font-size: 14px; color: var(--muted); margin: -4px 0 12px; }
+  .stack { display: grid; gap: 20px; }
+  .stack > *, .view .wrap > * { min-width: 0; }
+  .grid { display: grid; gap: 20px; align-items: start; }
+  .grid > * { min-width: 0; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g-7-5 { grid-template-columns: 7fr 5fr; }
+  .g-5-7 { grid-template-columns: 5fr 7fr; }
+  figure { margin: 0; }
+  figure img { width: 100%; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+  figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+  .chip { display: inline-block; font-size: 13px; font-weight: 700; border-radius: 999px; padding: 3px 11px; background: var(--soft); color: var(--deep); margin: 0 6px 6px 0; }
+  .chips { margin: 4px 0 12px; }
+  ul.dots { list-style: none; margin: 0 0 8px; padding: 0; }
+  ul.dots li { position: relative; padding-left: 20px; margin-bottom: 8px; }
+  ul.dots li::before { content: ""; position: absolute; left: 3px; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .note { font-size: 14.5px; color: var(--ink-2); background: var(--soft); border-radius: 12px; padding: 12px 16px; margin-top: 12px; }
+  .dash { border: 2px dashed var(--accent); }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .btn { display: inline-block; text-decoration: none; font-weight: 700; font-size: 15px; padding: 10px 18px; border-radius: 999px;
+         border: 2px solid var(--accent); color: #fff; background: var(--accent); transition: background-color 0.3s ease, color 0.3s ease; }
+  .btn:hover { background: #fff; color: var(--deep); }
+  .btn.ghost { background: #fff; color: var(--deep); }
+  .btn.ghost:hover { background: var(--accent); color: #fff; }
+  .pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+  .pager a { flex: 0 1 340px; text-decoration: none; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; color: var(--ink); }
+  .pager a:hover { border-color: var(--accent); }
+  .pager small { display: block; font-size: 13px; color: var(--muted); }
+  .pager b { color: var(--deep); font-size: 17px; }
+  .pager .next { text-align: right; }
+
+  /* tables */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+  th { text-align: left; font-weight: 800; padding: 12px 14px; background: var(--soft); color: var(--deep); border-bottom: 1px solid var(--line); vertical-align: bottom; }
+  td { padding: 11px 14px; border-top: 1px solid var(--line); vertical-align: top; }
+  tr:first-child td { border-top: 0; }
+  td.say { font-weight: 700; color: var(--deep); min-width: 200px; }
+  td a.go { font-weight: 700; white-space: nowrap; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .small-table table { font-size: 14px; }
+  .rate { display: inline-block; font-size: 12.5px; font-weight: 800; border-radius: 999px; padding: 2px 10px; white-space: nowrap; }
+  .rate.high { background: #FDE2E1; color: #8E1F1A; }
+  .rate.medium { background: #FFF1CC; color: #7A4A00; }
+  .rate.low { background: #E3F4EA; color: #155A2C; }
+  .rate.info { background: #E8F0FB; color: #1C4682; }
+
+  /* ---------- overview ---------- */
+  .hero { display: grid; grid-template-columns: 1fr 250px; gap: 36px; align-items: center; }
+  .hero h1 { font-size: clamp(34px, 5vw, 54px); line-height: 1.08; color: var(--deep); }
+  .hero .role { font-size: 19px; font-weight: 700; margin-top: 14px; color: var(--accent); }
+  .hero .lead { font-size: 17.5px; color: var(--ink-2); margin-top: 16px; max-width: 760px; }
+  .portrait img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top; border-radius: 22px; border: 4px solid #fff;
+                  box-shadow: 12px 12px 0 var(--accent); background: #fff; transition: box-shadow 0.45s ease; }
+  .kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin: 26px 0; }
+  .kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; border-left: 5px solid var(--accent); }
+  .kpi .v { font-size: clamp(21px, 2.2vw, 28px); font-weight: 800; line-height: 1.05; color: var(--deep); white-space: nowrap; }
+  .kpi .l { font-size: 13.5px; color: var(--ink-2); margin-top: 6px; line-height: 1.45; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+  .card h4 { color: var(--deep); margin-bottom: 6px; }
+  .card p { font-size: 15px; color: var(--ink-2); }
+
+  /* ---------- field ---------- */
+  .photos3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; align-items: start; }
+  .photos3 figure img { height: 260px; object-fit: cover; }
+  ol.flow { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  ol.flow li { counter-increment: s; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px; position: relative; }
+  ol.flow li::before { content: counter(s); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 800; margin-bottom: 8px; }
+  ol.flow b { display: block; margin-bottom: 4px; color: var(--deep); }
+  ol.flow span { font-size: 14px; color: var(--ink-2); display: block; line-height: 1.5; }
+
+  /* ---------- data and science ---------- */
+  .shot { display: block; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 8px; overflow-x: auto; }
+  .shot:hover { border-color: var(--accent); }
+  .shot img { border: 0; min-width: 760px; border-radius: 6px; }
+  .shot.fit img { min-width: 0; }
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0 4px; }
+  .facts div { background: var(--soft); border-radius: 12px; padding: 12px; font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+  .facts b { display: block; color: var(--deep); font-size: 22px; line-height: 1.1; margin-bottom: 4px; }
+  .refs { font-size: 14px; color: var(--ink-2); }
+  .refs li { margin-bottom: 6px; }
+  .papers li { margin-bottom: 10px; }
+  .papers i { color: var(--ink); }
+
+  /* ---------- footer ---------- */
+  footer { background: var(--deep); color: #EAECF0; padding: 40px 0 44px; transition: background-color 0.45s ease; }
+  footer h2 { color: #fff; font-size: 24px; margin-bottom: 8px; }
+  footer a { color: #fff; }
+  footer .small { font-size: 13.5px; color: #D0D5DD; margin-top: 16px; max-width: 880px; line-height: 1.6; }
+
+  @media (max-width: 980px) {
+    .kpis { grid-template-columns: repeat(3, 1fr); }
+    .g3, .g2, .g-7-5, .g-5-7, .cards { grid-template-columns: 1fr; }
+    ol.flow { grid-template-columns: 1fr 1fr; }
+    .facts { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 760px) {
+    .top-in { flex-wrap: wrap; gap: 0; min-height: 0; padding-top: 10px; }
+    .brand { font-size: 14px; }
+    .tabs { margin-left: -4px; width: calc(100% + 8px); padding: 8px 2px 10px; }
+    .tabs .ink { top: 8px; height: calc(100% - 18px); }
+    .tab { padding: 7px 12px; font-size: 14px; }
+    html { scroll-padding-top: 120px; }
+    .hero { grid-template-columns: 1fr; gap: 22px; }
+    .portrait { max-width: 200px; order: -1; }
+    .photos3 { grid-template-columns: 1fr 1fr; }
+    .photos3 figure:first-child { grid-column: span 2; }
+    .photos3 figure img { height: 220px; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 16px; }
+    body { font-size: 15.5px; }
+    .view { padding: 26px 0 48px; }
+    .view-head { padding: 20px 18px; border-radius: 14px; }
+    .view-head .lede { font-size: 16.5px; }
+    .panel { padding: 18px; border-radius: 14px; }
+    .kpis { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .kpi .v { font-size: 24px; }
+    ol.flow, .facts { grid-template-columns: 1fr; }
+    .hero .role { font-size: 17px; }
+    .brand .bn { max-width: 230px; overflow: hidden; text-overflow: ellipsis; }
+    table { font-size: 14px; }
+    th, td { padding: 10px 11px; }
+    .stack-sm thead { display: none; }
+    .stack-sm, .stack-sm tbody, .stack-sm tr, .stack-sm td { display: block; width: 100%; }
+    .stack-sm tr { border-top: 1px solid var(--line); padding: 10px 12px; }
+    .stack-sm tr:first-child { border-top: 0; }
+    .stack-sm td { border: 0; padding: 2px 0; min-width: 0 !important; white-space: normal !important; text-align: left !important; }
+    .stack-sm td[data-l]::before { content: attr(data-l) ": "; font-weight: 700; color: var(--muted); }
+    .table-wrap.stack-wrap { overflow-x: visible; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .js .view { animation: none; }
+    .stage .bg, .tabs .ink, .top, .tab { transition: none; }
+  }
+  @media print {
+    .top { position: static; }
+    .view[hidden] { display: block !important; }
+    .stage { display: none; }
+  }
+</style>
+<script>document.documentElement.className = "js";</script>
+</head>
+<body data-view="overview">
+<a class="skip" href="#main">Skip to content</a>
+<div class="stage" aria-hidden="true">
+  <div class="bg on" id="bgA" style="background-image:url('assets/img/bg-overview.jpg')"></div>
+  <div class="bg" id="bgB"></div>
+  <div class="tint"></div>
+  <div class="veil"></div>
+</div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#overview" data-go="overview"><span class="mono">LA</span><span class="bn">Les' Aullian Achmad Argito</span></a>
+    <nav class="tabs" aria-label="Portfolio sections">
+      <a class="tab" href="#overview" data-go="overview" aria-current="page">Overview</a>
+      <a class="tab" href="#field" data-go="field">Field Operations</a>
+      <a class="tab" href="#data" data-go="data">Project Data</a>
+      <a class="tab" href="#science" data-go="science">Carbon &amp; Science</a>
+      <a class="tab" href="#sop" data-go="sop">SOP &amp; Risk</a>
+      <span class="ink" aria-hidden="true"></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ======================================================= OVERVIEW -->
+<section class="view" id="overview" data-bg="assets/img/bg-overview.jpg" data-title="Overview">
+  <div class="wrap">
+    <div class="view-head">
+      <div class="hero">
+        <div>
+          <h1>Les' Aullian Achmad Argito</h1>
+          <div class="role">Operations &amp; Science Intern applicant · CLIP, CarbonEthics Jakarta (HQ)</div>
+          <p class="lead">Fresh graduate in Agricultural Engineering (S.T.P., Universitas Gadjah Mada, GPA 3.44/4.00, graduated 16 July 2026). My work so far sits where restoration projects succeed or fail: in the field with community partners, and in the data that has to prove the result afterwards. This site takes the six responsibilities in your posting one at a time and shows what I have already done for each, plus three work samples I built for this application.</p>
+          <div class="btns">
+            <a class="btn" href="mailto:lesargito@gmail.com?subject=Operations%20%26%20Science%20Intern%20-%20Les%27%20Aullian%20Achmad%20Argito">Email me</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/lesaullianachmadargito/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn ghost" href="https://github.com/lesaullianachmadargito/blue-carbon-ops-portfolio" target="_blank" rel="noopener">Code on GitHub</a>
+          </div>
+        </div>
+        <div class="portrait"><img src="assets/img/portrait.jpg" width="540" height="720" alt="Portrait of Les' Aullian Achmad Argito"></div>
+      </div>
+    </div>
+
+    <div class="kpis" aria-label="Key figures">
+      <div class="kpi"><div class="v">IDR 100M</div><div class="l">village grant programme I led from site survey to handover, 2025 to 2026</div></div>
+      <div class="kpi"><div class="v">43 of 79</div><div class="l">activities I ran during two months on site with a farmer group</div></div>
+      <div class="kpi"><div class="v">26</div><div class="l">treatments in a growth trial I led, measured by dry mass</div></div>
+      <div class="kpi"><div class="v">3,025</div><div class="l">raw measurement sweeps checked point by point before analysis</div></div>
+      <div class="kpi"><div class="v">3</div><div class="l">conference papers in 2026, two published in IOP Conf. Series</div></div>
+      <div class="kpi"><div class="v">7</div><div class="l">quality and food-safety certificates, including HACCP plan writing</div></div>
+    </div>
+
+    <div class="panel">
+      <h2 style="font-size:24px;color:var(--deep);margin-bottom:14px">Your posting, and where my evidence is</h2>
+      <div class="table-wrap stack-wrap">
+        <table class="stack-sm">
+          <thead><tr><th>Your posting says</th><th>What I can show</th><th>Where</th></tr></thead>
+          <tbody>
+            <tr><td class="say">Support blue carbon restoration projects: preparation, administration, documentation, follow-ups and coordination so planting runs smoothly</td><td data-l="Evidence">Led a 6-person team through an IDR 100 million PLN grant: budget plan, land, labour and timeline agreed with a village government and two community groups, a 7-month build, handover and funder reports.</td><td data-l="Tab"><a class="go" href="#field" data-go="field">Field Operations</a></td></tr>
+            <tr><td class="say">Collect, organize and maintain project data from planting, monitoring and field activities</td><td data-l="Evidence">A planting and monitoring workbook with 8 automatic checks, built for this application; 3,025 thesis sweeps cleaned point by point; a 26-treatment trial dataset.</td><td data-l="Tab"><a class="go" href="#data" data-go="data">Project Data</a></td></tr>
+            <tr><td class="say">Field observations, site assessments, monitoring and data collection</td><td data-l="Evidence">Five villages surveyed before choosing one site; a 3-day field observation and farmer interview that tested 8 assumptions; monitoring units installed on an industrial R&amp;D site.</td><td data-l="Tab"><a class="go" href="#field" data-go="field">Field Operations</a></td></tr>
+            <tr><td class="say">Data analysis, report review, scientific writing and data visualization</td><td data-l="Evidence">A plot-to-hectare carbon stock calculation with confidence intervals and plot counts; 3 conference papers in 2026; about 95 lab reports per cohort graded on one rubric.</td><td data-l="Tab"><a class="go" href="#science" data-go="science">Carbon &amp; Science</a></td></tr>
+            <tr><td class="say">Field problem solving with planting partners and local communities</td><td data-l="Evidence">Village farmland projects adapted to the site: solar power where electricity was limited, a tool rebuilt after a field trial with residents' materials, a solution redesigned after an interview proved half my assumptions wrong.</td><td data-l="Tab"><a class="go" href="#field" data-go="field">Field Operations</a></td></tr>
+            <tr><td class="say">Improve SOPs, operational guidelines and risk mitigation</td><td data-l="Evidence">A 21-page HACCP plan I wrote alone (4 critical control points); a planting-day SOP and a 12-risk register built for this application.</td><td data-l="Tab"><a class="go" href="#sop" data-go="sop">SOP &amp; Risk</a></td></tr>
+            <tr><td class="say">Basic knowledge or experience in carbon stock sampling, measurement and carbon data processing</td><td data-l="Evidence">Knowledge, not field experience yet: the calculation chain from stem diameter and soil cores to Mg C per hectare, worked through with published equations; emissions modelling with IPCC 2006 factors for WRI Indonesia.</td><td data-l="Tab"><a class="go" href="#science" data-go="science">Carbon &amp; Science</a></td></tr>
+            <tr><td class="say">Willing to travel to project sites on short notice; Microsoft Office and Google Workspace</td><td data-l="Evidence">Based in South Jakarta with a SIM A driving licence; two months living on site for KKN and three months on site for an industrial internship. Excel with PivotTable, Power Query, COUNTIFS and INDEX-MATCH; Google Sheets, Docs and Forms.</td><td data-l="Tab"><a class="go" href="#field" data-go="field">Field Operations</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:20px">
+      <h3>Built for this application</h3>
+      <div class="cards">
+        <div class="card"><h4>Mangrove carbon stock, plot to hectare</h4><p>Python with published equations and illustrative data: pools per hectare with 90% confidence intervals, how far one soil equation moves the answer, and how many plots a precision target costs.</p><p><a href="#science" data-go="science">See it under Carbon &amp; Science</a></p></div>
+        <div class="card"><h4>Planting and monitoring data kit</h4><p>An Excel workbook that also opens in Google Sheets: planting log, census, 8 checks that caught 9 bad rows, replanting triggers and a dashboard. A separate Python check agrees on all 248 values.</p><p><a href="#data" data-go="data">See it under Project Data</a></p></div>
+        <div class="card"><h4>Planting-day SOP and risk register</h4><p>18 steps from the tide table to paying the partner group, each with an owner and a record, and 12 risks scored by likelihood and severity with controls before and on the day.</p><p><a href="#sop" data-go="sop">See it under SOP &amp; Risk</a></p></div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:20px">
+      <div class="panel">
+        <h3>Why this role</h3>
+        <p>I want to work where the number reported to a funder is only as good as the field count behind it. CarbonEthics runs community planting, monitors survival for its clients and is now building carbon projects, which is that problem at a larger scale. My best work so far has been either in villages with farmer groups or in making measurement data trustworthy, and this internship asks for both.</p>
+      </div>
+      <div class="panel dash">
+        <h3>What I do not have yet</h3>
+        <ul class="dots">
+          <li>Field time on a mangrove or seagrass site. My field work is on farmland, in fish-farming villages and on an industrial R&amp;D site.</li>
+          <li>Carbon stock sampling in the field (tree plots, soil cores) or laboratory loss-on-ignition and elemental analysis.</li>
+          <li>Work under a carbon standard or registry.</li>
+          <li>A degree in one of the listed majors: mine is Agricultural Engineering, which covers soil, water and plant growth.</li>
+        </ul>
+      </div>
+    </div>
+
+    <nav class="pager" aria-label="Next section">
+      <span></span>
+      <a class="next" href="#field" data-go="field"><small>Next</small><b>Field Operations</b></a>
+    </nav>
+  </div>
+</section>
+
+<!-- ======================================================= FIELD OPERATIONS -->
+<section class="view" id="field" data-bg="assets/img/bg-field.jpg" data-title="Field Operations">
+  <div class="wrap">
+    <div class="view-head">
+      <h2>Field operations: from a funded plan to a site the partners run</h2>
+      <p class="lede">Two programmes where I carried the preparation, the paperwork, the coordination with village partners and the work on site, and two field assessments that changed what we built.</p>
+    </div>
+
+    <div class="stack">
+      <div class="panel">
+        <h3>EcoMaggot Village, PLN SustainAction 2025</h3>
+        <p class="meta">Program Leader, 6-person team · IDR 100 million implementation grant, 3rd place nationally · Wonokerto, Turi, Sleman · Sep 2025 to present</p>
+        <ol class="flow">
+          <li><b>Plan</b><span>Led the team that planned an IDR 100.97 million budget in 4 cost groups, with work plans the funder approved.</span></li>
+          <li><b>Agree</b><span>Land, labour and timeline agreed with the village government, KWT Gambang Lestari (the land) and the Kembang Mulyo salak farmer group.</span></li>
+          <li><b>Build</b><span>Survey, operator training, a 3 x 12 m screened fly house and greenhouse, rearing racks, a chopper-spinner and sensors, Nov 2025 to May 2026.</span></li>
+          <li><b>Hand over</b><span>Facility handed to the two community groups who run it.</span></li>
+          <li><b>Report</b><span>Purchases documented against the approved budget for the funder's progress reports.</span></li>
+        </ol>
+        <div class="photos3" style="margin-top:16px">
+          <figure><img src="assets/img/ecomaggot-racks.jpg" width="1000" height="750" loading="lazy" alt="Rearing racks inside the screened greenhouse built for EcoMaggot Village"><figcaption>Rearing racks inside the greenhouse the team built.</figcaption></figure>
+          <figure><img src="assets/img/ecomaggot-exterior.jpg" width="720" height="1280" loading="lazy" alt="The screened fly house and greenhouse from outside"><figcaption>The 3 x 12 m fly house and greenhouse on the partner group's land.</figcaption></figure>
+          <figure><img src="assets/img/eco-harvest.jpg" width="640" height="360" loading="lazy" alt="Hands harvesting larvae from a bucket"><figcaption>First harvest by the operators.</figcaption></figure>
+        </div>
+        <p class="note">What carries over to a planting programme: a funder's calendar, a partner group that owns the site after handover, and a budget that has to match the receipts. The proposal targets about 75 direct beneficiaries (45 salak farmers and 30 fish farmers); those are design targets, not measured results.</p>
+      </div>
+
+      <div class="grid g-7-5">
+        <div class="panel">
+          <h3>KKN-PPM UGM 2025, Tegalweru village, Malang</h3>
+          <p class="meta">Two months on site, June to August 2025 · person in charge of 43 of the 79 activities in my individual report · 40 of the 43 with the village farmer group</p>
+          <ul class="dots">
+            <li><b>Solar where electricity was limited.</b> Chose a solar-powered ultrasonic pest repeller because the orchard had limited electricity, field-tested its range and placement, then ran a 5-hour maintenance and troubleshooting session for farmers and handed it over with the village government present.</li>
+            <li><b>Built with residents' materials.</b> An ergonomic fertiliser applicator: residents supplied local materials, the team bought the main parts, and the flow and height were fixed after a field trial.</li>
+            <li><b>Handover that sticks.</b> After a 6-hour session on bait replacement for solar UV fruit-fly traps, residents began replacing the bait themselves.</li>
+            <li><b>Irrigation for citrus.</b> A soil-moisture irrigation set-up installed on 10 July 2025 with a 7-hour farmer training; the village government helped carry the equipment to the site.</li>
+            <li><b>Records.</b> 220 effective hours on the 43 activities I led; my daily logbook records 390 effective hours against a 288-hour minimum.</li>
+          </ul>
+        </div>
+        <div class="stack">
+          <figure><img src="assets/img/kkn-applicator.jpg" width="1000" height="750" loading="lazy" alt="Ergonomic fertiliser applicator built during KKN"><figcaption>The fertiliser applicator after the field-trial changes.</figcaption></figure>
+          <figure><img src="assets/img/kkn-layout.jpg" width="1000" height="528" loading="lazy" alt="SketchUp layout of the citrus irrigation set-up"><figcaption>My SketchUp layout for the citrus irrigation.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="grid g2">
+        <div class="panel">
+          <h3>Site assessment before committing</h3>
+          <p class="meta">PPK Ormawa 2024 and EcoMaggot site selection</p>
+          <p>Before the salak-waste programme had a site, the team surveyed five villages and chose Wonokerto, where salak orchards cover about 45% of the village area (705 ha, per the programme proposal). Every later round (PFmuda 2024, PLN SustainAction 2025, BA-SE 2026) built on that one choice.</p>
+        </div>
+        <div class="panel">
+          <h3>Testing assumptions with the people who live with the problem</h3>
+          <p class="meta">Young Impact Generator Fellowship 2026, The Local Enablers · selected fellow</p>
+          <p>I wrote down 8 assumptions about rejected (afkir) salak in Wonokerto, spent 3 days observing, then interviewed a salak farmer and farmer-group member on 5 August 2026. Four assumptions held and four failed, so the solution moved from training farmers to one collection point with one guaranteed buyer. For a planting partner the lesson is the same: ask before you design the maintenance plan.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Monitoring equipment on an industrial site</h3>
+        <p class="meta">PT Petrokimia Gresik (Pupuk Indonesia Group), Research Department · internship on site, Dec 2024 to Feb 2025, graded A · project assistant on an R&amp;D monitoring system before that</p>
+        <p>With the internship team I installed a solar-powered air-quality station and a floating water-quality unit (turbidity and conductivity sensors): electronics, a concrete footing and the float box, then checked the solar panel voltage on site. I also re-measured a 20.3 x 10.38 m greenhouse and calculated its cooling load (45.5 kW). No photos here: it is the company's site.</p>
+      </div>
+    </div>
+
+    <nav class="pager" aria-label="More sections">
+      <a href="#overview" data-go="overview"><small>Previous</small><b>Overview</b></a>
+      <a class="next" href="#data" data-go="data"><small>Next</small><b>Project Data</b></a>
+    </nav>
+  </div>
+</section>
+
+<!-- ======================================================= PROJECT DATA -->
+<section class="view" id="data" data-bg="assets/img/bg-data.jpg" data-title="Project Data">
+  <div class="wrap">
+    <div class="view-head">
+      <h2>Project data: every count traceable to a plot, a date and a person</h2>
+      <p class="lede">Monitoring data is only worth reporting if a wrong row is caught before it reaches a client. A kit built for planting and survival data, and two research datasets where I did the cleaning.</p>
+    </div>
+
+    <div class="stack">
+      <div class="panel">
+        <h3>Work sample: Planting and Monitoring Data Kit</h3>
+        <p class="meta">Built for this application · Excel, opens in Google Sheets · illustrative data: 3 sites, 12 plots, 40 visits, with 8 kinds of entry error planted on purpose</p>
+        <p>One row per plot planted, one row per plot visit, and formulas that check every visit against the plot's history. Plot status is computed only from rows that pass every check, so a typo can delay a decision but cannot distort it.</p>
+        <a class="shot" href="assets/img/ws-kit-monitoring.png" target="_blank" rel="noopener"><img src="assets/img/ws-kit-monitoring.png" width="1546" height="986" loading="lazy" alt="Monitoring sheet with nine rows highlighted in red and their QA flags"></a>
+        <p class="meta" style="margin-top:8px">Monitoring sheet (formula helper columns hidden). Red rows failed a check; the flag says which one.</p>
+        <div class="grid g2" style="margin-top:10px">
+          <div>
+            <h4>The 8 checks, and what they caught</h4>
+            <div class="table-wrap small-table">
+              <table>
+                <thead><tr><th>Check</th><th>Caught here</th></tr></thead>
+                <tbody>
+                  <tr><td>Plot ID not in the planting log</td><td>"B3" typed for B03</td></tr>
+                  <tr><td>Visit dated before planting</td><td>C01: year typed as 2025</td></tr>
+                  <tr><td>Alive + dead + missing does not equal the expected total</td><td>A03, month 3: 520 counted on 500</td></tr>
+                  <tr><td>More alive than last visit, with no replanting</td><td>B02, month 6: 562 after 545</td></tr>
+                  <tr><td>Same plot and date entered twice</td><td>C03, month 3 (two rows)</td></tr>
+                  <tr><td>Mean height outside 10 to 250 cm</td><td>B04: 850 cm, a slipped decimal</td></tr>
+                  <tr><td>No observer named</td><td>C04, month 6</td></tr>
+                  <tr><td>Losses with no cause recorded</td><td>B01, month 1</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <h4>What the status sheet decided</h4>
+            <ul class="dots">
+              <li><b>2 plots to replant</b> (stocking below 70% at the month-6 census): 60 seedlings for A04 and 75 for B03, ordered up to 80% of the design count.</li>
+              <li><b>5 plots with the census overdue</b> (last clean visit more than 100 days before the report date), including two whose newer rows are still flagged.</li>
+              <li><b>A02 shows why two measures are kept.</b> After replanting 157 seedlings its stocking is back to 74% of the design count, but only 57% of all seedlings ever planted there are alive: replanting fixed the number, not the cost.</li>
+              <li><b>Barnacles</b> are the main cause on the plots that lost the most seedlings (570 across 3 plots).</li>
+            </ul>
+            <p class="note">A separate Python script reads only the input cells, applies the same rules independently and compares its answers with Excel's: 248 values checked, 0 mismatches.</p>
+            <div class="btns"><a class="btn" href="assets/files/planting-monitoring-kit-illustrative.xlsx" download>Download the workbook (.xlsx)</a><a class="btn ghost" href="https://github.com/lesaullianachmadargito/blue-carbon-ops-portfolio/tree/main/work-samples/monitoring_kit" target="_blank" rel="noopener">Builder and check scripts</a></div>
+          </div>
+        </div>
+        <figure style="margin-top:16px"><a class="shot" href="assets/img/ws-kit-status.png" target="_blank" rel="noopener"><img src="assets/img/ws-kit-status.png" width="1545" height="314" loading="lazy" alt="Plot status sheet with a status and next action for each plot"></a><figcaption>Plot_Status: one line per plot from its last clean visit, with the next action written out.</figcaption></figure>
+        <div class="grid g-7-5" style="margin-top:16px">
+          <figure><a class="shot fit" href="assets/img/ws-kit-dashboard.png" target="_blank" rel="noopener"><img src="assets/img/ws-kit-dashboard.png" width="1381" height="1133" loading="lazy" alt="Dashboard sheet with key figures and three charts"></a><figcaption>Dashboard sheet: key figures, stocking by plot against the trigger, stocking by census month, losses by cause.</figcaption></figure>
+          <div>
+            <h4>The data rules the workbook enforces</h4>
+            <ul class="dots">
+              <li><b>Counts are cumulative since planting:</b> alive + dead + missing must equal the seedlings planted plus any replanted on earlier visits.</li>
+              <li><b>Replanting is recorded on the visit where it happens,</b> after that visit's count, and enters the expected total from the next visit.</li>
+              <li><b>Status uses only rows that pass every check.</b> A flagged row is corrected at the source, never deleted; until then the plot shows its last clean census.</li>
+              <li><b>Two measures, kept apart:</b> stocking (living trees against the design count) drives replanting; survival (living trees against every seedling ever planted) shows what replanting cost.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid g-7-5">
+        <div class="panel">
+          <h3>Thesis data: catching an artefact before it became a finding</h3>
+          <p class="meta">Smart Agriculture Research Center, Department of Agricultural and Biosystems Engineering, UGM · undergraduate researcher · thesis graded A</p>
+          <ul class="dots">
+            <li>After graduating I re-analysed the thesis data for the group's journal paper with a 2,905-line Python pipeline that checks every point of 3,025 raw impedance sweeps from 367 measurement sessions before anything is fitted; the median fit R&sup2; rose from 0.47 to 0.94 after point-level quality control.</li>
+            <li>Found that the same leaf read 1.05, 50.9 or 91.2 kOhm at 1 kHz depending only on the calibration reference resistor, so I reported only the 6.8 to 30.8 kHz window where the readings agreed.</li>
+            <li>The habit it left me with is the one a carbon dataset needs: ask how a number was measured before comparing it with another.</li>
+          </ul>
+        </div>
+        <figure><img src="assets/img/thesis-rig.jpg" width="900" height="1200" loading="lazy" alt="Impedance measurement rig on a hydroponic lettuce plant"><figcaption>The impedance rig on a hydroponic lettuce plant.</figcaption></figure>
+      </div>
+
+      <div class="panel">
+        <h3>A growth trial I led: PKM-RE 2025 national research grant</h3>
+        <p class="meta">Team Leader and principal investigator of record (UGM ethics approval KE/UGM/151/EC/2025) · IDR 7.5 million from Belmawa · Jan to Nov 2025</p>
+        <div class="grid g-5-7">
+          <div>
+            <ul class="dots">
+              <li>26 treatments: a complete 3 x 2 x 2 x 2 factorial (species, live or heat-killed, dose, with or without nutrient solution) plus two controls, harvested at day 14.</li>
+              <li>Dry mass, chlorophyll, photosynthesis readings and protein (12 samples analysed at UGM's Center for Food and Nutrition Studies); 37 expense lines reported against the grant.</li>
+              <li>The honest result: live inoculum with nutrient solution beat plain water by about 49%, but only 10 of the 24 cells beat water at all. Reporting the average as "it improves growth" would have been wrong.</li>
+              <li>Led to a filed national patent application (inventor 3 of 7, pending) and the team's paper in IOP Conf. Series: Earth and Environmental Science 1667, 012006 (third of nine authors).</li>
+            </ul>
+          </div>
+          <figure><img src="assets/img/trial-drymass.png" width="1400" height="587" loading="lazy" alt="Bar chart of microgreen dry mass by species, live or dead inoculum, with and without nutrient solution"><figcaption>Dry mass by species and inoculum, from the trial data (analysis code: microgreens-microalgae-trial on my GitHub).</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <nav class="pager" aria-label="More sections">
+      <a href="#field" data-go="field"><small>Previous</small><b>Field Operations</b></a>
+      <a class="next" href="#science" data-go="science"><small>Next</small><b>Carbon &amp; Science</b></a>
+    </nav>
+  </div>
+</section>
+
+<!-- ======================================================= CARBON & SCIENCE -->
+<section class="view" id="science" data-bg="assets/img/bg-science.jpg" data-title="Carbon &amp; Science">
+  <div class="wrap">
+    <div class="view-head">
+      <h2>Carbon and science: from plot data to a number someone can defend</h2>
+      <p class="lede">A worked example of the calculation your posting asks about, using published equations and illustrative data, followed by the emissions modelling and papers I have done.</p>
+    </div>
+
+    <div class="stack">
+      <div class="panel">
+        <h3>Work sample: mangrove carbon stock, plot to hectare</h3>
+        <p class="meta">Built for this application · Python (NumPy, SciPy, Matplotlib) · illustrative data generated by the script: 8 circular plots of 7 m radius, 578 stems, one soil core per plot in 4 layers to 1 m</p>
+        <ol class="flow">
+          <li><b>Stems to biomass</b><span>Komiyama et al. (2005) common equations: above-ground 0.251 &rho; D<sup>2.46</sup>, roots 0.199 &rho;<sup>0.899</sup> D<sup>2.22</sup>.</span></li>
+          <li><b>Biomass to carbon</b><span>Carbon fraction 0.47 (IPCC 2006 default), then 44/12 for CO2e.</span></li>
+          <li><b>Soil cores</b><span>Bulk density x layer thickness x organic carbon %, layer by layer to 100 cm.</span></li>
+          <li><b>Per hectare</b><span>Plot means with 90% and 95% confidence intervals, coefficient of variation.</span></li>
+          <li><b>Plots needed</b><span>Smallest n with t x CV / &radic;n within the precision target at 90% confidence.</span></li>
+        </ol>
+        <div class="facts">
+          <div><b>88%</b>of the carbon on these plots is in the soil (531 of 603 Mg C per ha)</div>
+          <div><b>78 Mg C/ha</b>moved by the choice of soil equation alone, more than all the trees hold (72)</div>
+          <div><b>&plusmn;23%</b>precision on tree carbon from 8 plots; &plusmn;10% would need 35</div>
+          <div><b>17 to 86 kg</b>CO2e per surviving tree at 4 to 8 cm diameter</div>
+        </div>
+        <div class="grid g2" style="margin-top:14px">
+          <figure><img src="assets/img/ws-carbon-pools.png" width="1480" height="819" loading="lazy" alt="Bar chart: above-ground trees 48, roots 24, soil 531 Mg C per hectare with 90% confidence intervals"><figcaption>Where the carbon sits. Mean of 8 plots with the 90% confidence interval.</figcaption></figure>
+          <figure><img src="assets/img/ws-carbon-loi.png" width="1480" height="819" loading="lazy" alt="Grouped bars of soil carbon by layer under two loss-on-ignition equations"><figcaption>Same cores, two published LOI-to-organic-carbon equations.</figcaption></figure>
+          <figure><img src="assets/img/ws-carbon-plots.png" width="1480" height="819" loading="lazy" alt="Lines showing plots needed against coefficient of variation for three precision targets"><figcaption>What a precision target costs in plots.</figcaption></figure>
+          <figure><img src="assets/img/ws-carbon-survival.png" width="1480" height="819" loading="lazy" alt="Lines of CO2e per seedling planted against survival for three diameters"><figcaption>Why survival monitoring is carbon monitoring.</figcaption></figure>
+        </div>
+        <div class="grid g2" style="margin-top:14px">
+          <div>
+            <h4>What I would take into a real project</h4>
+            <ul class="dots">
+              <li><b>Fix one soil equation in the SOP and calibrate it.</b> The conventional equation from Palau mangroves and a newer Philippine one differ by 15% on the same cores. Running a subset of samples by elemental analysis tells the project which one fits its own soils. For change between two campaigns the intercept cancels, but the slopes still differ by 13%, so the equation must never switch mid-project.</li>
+              <li><b>Plan plot numbers from a pilot.</b> Tree carbon varied by 35% between these plots, so 8 plots pin the mean only to &plusmn;23%; the pilot's variation decides the field budget.</li>
+              <li><b>Report per tree with its basis.</b> A per-tree figure changes fivefold between 4 and 8 cm diameter and scales with survival, so it needs the year, the size and whether it counts survivors or seedlings planted.</li>
+              <li><b>Small stems are reported separately.</b> Stems under 5 cm hold 10% of tree carbon here; size thresholds and nested plot sizes follow the project's methodology.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Sources and placeholders</h4>
+            <ul class="refs">
+              <li>Komiyama, A., Poungparn, S. and Kato, S. (2005). Common allometric equations for estimating the tree weight of mangroves. <i>Journal of Tropical Ecology</i> 21: 471-477.</li>
+              <li>Salmo et al. (2024). Improving soil carbon estimates of Philippine mangroves using localized organic matter to organic carbon equations. <i>Carbon Balance and Management</i>, doi:10.1186/s13021-024-00276-y. Source of both soil equations: conventional %Corg = 0.415 x %LOI + 2.89 (Palau mangroves) and localized %OC = 0.36 x %LOI + 2.40.</li>
+              <li>IPCC (2006). Guidelines for National Greenhouse Gas Inventories, Vol. 4: default carbon fraction 0.47.</li>
+              <li><b>Placeholders:</b> the two wood densities (0.80 and 0.65 g/cm&sup3;) must be replaced with species values from the Global Wood Density Database (Zanne et al. 2009) or a site study; the script prints how many placeholders are in use every time it runs.</li>
+            </ul>
+            <div class="btns"><a class="btn" href="https://github.com/lesaullianachmadargito/blue-carbon-ops-portfolio/tree/main/work-samples/carbon_stock" target="_blank" rel="noopener">Code and outputs</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid g2">
+        <div class="panel">
+          <h3>Emissions modelling: WRI Indonesia, ICUC 2025</h3>
+          <p class="meta">Finalist, 1 of 6 teams invited to incubation and final judging, Jakarta, 24 to 28 Nov 2025 · Team Leader, Team SolarMove (3 students)</p>
+          <p>Projected Scope 1 and Scope 2 emissions of the Jabodetabek bus fleet to 2060 under business-as-usual and two electrification scenarios, in a Vensim model built on the activity-structure-intensity-fuel framework with IPCC 2006 emission factors, BPS data and Transjakarta annual reports 2019 to 2024.</p>
+          <p>The sensitivity test is the part I would reuse: a 20% change in the grid emission factor moved total emissions by 14 to 18%, so the factor's source had to be stated before any scenario could be compared.</p>
+        </div>
+        <div class="panel">
+          <h3>Scientific writing</h3>
+          <ul class="papers">
+            <li><i>Optimization of Excitation Voltage and Calibration Resistor for Electrical Impedance Spectroscopy-Based Chlorophyll Estimation in Lettuce.</i> IOP Conf. Ser.: Earth Environ. Sci. 1667, 012005 (AESAP 2026, IPB University). Second author, presenter.</li>
+            <li><i>Physiological and Spectral Response of Broccoli Microgreens under Living and Dead Microalgae Biofertilizer Treatments in a Controlled Plant Factory.</i> IOP Conf. Ser.: Earth Environ. Sci. 1667, 012006. Third of nine authors.</li>
+            <li><i>Karakteristik Impedansi Listrik Daun Selada pada Tegangan 0,4 V dan 100 k&Omega;.</i> Seminar Nasional Agrotropikal 2026, Universitas Mulawarman. First author, presenter.</li>
+          </ul>
+          <p class="note">Report review: as a teaching assistant I graded about 95 lab reports per cohort against one rubric (5 appointments recorded in my Diploma Supplement).</p>
+        </div>
+      </div>
+
+      <div class="grid g-5-7">
+        <figure><img src="assets/img/thesis-chamber.jpg" width="900" height="1200" loading="lazy" alt="Controlled-environment growth chamber used for the thesis plants"><figcaption>The growth chamber used for the thesis plants.</figcaption></figure>
+        <div class="panel">
+          <h3>Coursework that carries over</h3>
+          <p>Agricultural Engineering at UGM (programme accredited Unggul and by ASIIN, Germany) is built on soil, water and plants. The courses closest to blue carbon work:</p>
+          <div class="chips">
+            <span class="chip">Climatology (A)</span><span class="chip">Introduction to Agronomy (A-)</span><span class="chip">Fundamentals of Soil Physics (B+)</span><span class="chip">Statistics I and II</span><span class="chip">Agricultural Environmental Engineering (B+)</span><span class="chip">Measurement and Instrumentation (A-)</span><span class="chip">Hydrology</span><span class="chip">Cell Biology</span><span class="chip">Microbiology</span><span class="chip">Biophysics</span><span class="chip">Community Communication (A)</span>
+          </div>
+          <p>Diploma Supplement learning-outcome scores against a standard of 75: data and technology literacy 97.92, planning and evaluating tasks 96.88, communication 92.86, cross-disciplinary teamwork 100.</p>
+        </div>
+      </div>
+    </div>
+
+    <nav class="pager" aria-label="More sections">
+      <a href="#data" data-go="data"><small>Previous</small><b>Project Data</b></a>
+      <a class="next" href="#sop" data-go="sop"><small>Next</small><b>SOP &amp; Risk</b></a>
+    </nav>
+  </div>
+</section>
+
+<!-- ======================================================= SOP & RISK -->
+<section class="view" id="sop" data-bg="assets/img/bg-sop.jpg" data-title="SOP &amp; Risk">
+  <div class="wrap">
+    <div class="view-head">
+      <h2>SOPs and risk: write the procedure, then make it checkable</h2>
+      <p class="lede">Seven quality and food-safety certificates taught me one chain: hazard, control, check, correction, record. The same chain fits a planting day. Both tables below are drafts built from public restoration guidance and my own field work, to be adapted to CarbonEthics' own SOPs.</p>
+    </div>
+
+    <div class="stack">
+      <div class="panel">
+        <h3>Work sample: planting-day SOP</h3>
+        <p class="meta">18 steps, each with an owner and a record · also a sheet in the data kit</p>
+        <div class="table-wrap stack-wrap small-table">
+          <table class="stack-sm">
+            <thead><tr><th>Phase</th><th>Step</th><th>What good looks like</th><th>Owner</th><th>Record kept</th></tr></thead>
+            <tbody>
+              <tr><td data-l="Phase">T-14 to T-7: plan</td><td data-l="Step"><b>Confirm the plots to be planted, their boundaries and waypoint IDs</b></td><td data-l="What good looks like">Every plot has an ID in Planting_Log before the day</td><td data-l="Owner">Ops intern</td><td data-l="Record">Planting_Log rows</td></tr>
+              <tr><td data-l="Phase">T-14 to T-7: plan</td><td data-l="Step"><b>Choose the date and start time from the tide table</b></td><td data-l="What good looks like">Planting on a falling-to-low tide; crew off the flat before the flood returns</td><td data-l="Owner">Field lead</td><td data-l="Record">Tide window in the day plan</td></tr>
+              <tr><td data-l="Phase">T-14 to T-7: plan</td><td data-l="Step"><b>Check that each zone is plantable</b></td><td data-l="What good looks like">Elevation and flooding compared with nearby natural mangroves; species matched to the zone</td><td data-l="Owner">Science team</td><td data-l="Record">Site note with photos</td></tr>
+              <tr><td data-l="Phase">T-14 to T-7: plan</td><td data-l="Step"><b>Agree roles, numbers and compensation with the partner group in writing</b></td><td data-l="What good looks like">Who plants, who maintains, how much and when, in Bahasa Indonesia</td><td data-l="Owner">Ops lead + partner lead</td><td data-l="Record">Signed agreement or written confirmation on file</td></tr>
+              <tr><td data-l="Phase">T-14 to T-7: plan</td><td data-l="Step"><b>Order seedlings by zone</b></td><td data-l="What good looks like">Planned count plus 10% spare; minimum height and leaf count stated in the order</td><td data-l="Owner">Ops intern</td><td data-l="Record">Seedling order</td></tr>
+              <tr><td data-l="Phase">T-14 to T-7: plan</td><td data-l="Step"><b>Permits and notifications</b></td><td data-l="What good looks like">Village office or area authority informed as required; client briefing pack for corporate plantings</td><td data-l="Owner">Ops lead</td><td data-l="Record">Letter or message on file</td></tr>
+              <tr><td data-l="Phase">T-14 to T-7: plan</td><td data-l="Step"><b>Participant list and safety kit</b></td><td data-l="What good looks like">Emergency contacts; boots, gloves, first aid, water; life jackets for any boat transfer</td><td data-l="Owner">Ops intern</td><td data-l="Record">Participant list, kit checklist</td></tr>
+              <tr><td data-l="Phase">T-1: check</td><td data-l="Step"><b>Seedling quality check at the nursery</b></td><td data-l="What good looks like">Count, height, healthy leaves, intact root ball, no pests; reject below standard</td><td data-l="Owner">Science team + partner</td><td data-l="Record">QC sheet: accepted and rejected</td></tr>
+              <tr><td data-l="Phase">T-1: check</td><td data-l="Step"><b>Weather and sea check</b></td><td data-l="What good looks like">Marine forecast checked; go or no-go sent by 06:00 on the day; backup date agreed</td><td data-l="Owner">Field lead</td><td data-l="Record">Go/no-go message</td></tr>
+              <tr><td data-l="Phase">T-1: check</td><td data-l="Step"><b>Prepare data tools</b></td><td data-l="What good looks like">Forms loaded, plot tags with batch codes printed, GPS and phones charged</td><td data-l="Owner">Ops intern</td><td data-l="Record">Ready checklist</td></tr>
+              <tr><td data-l="Phase">Day: plant</td><td data-l="Step"><b>Safety and method briefing</b></td><td data-l="What good looks like">Tide time, mud safety, planting depth, staking and tying, nothing plastic left behind</td><td data-l="Owner">Field lead</td><td data-l="Record">Briefing done before planting starts</td></tr>
+              <tr><td data-l="Phase">Day: plant</td><td data-l="Step"><b>Assign plots to teams, one recorder per plot</b></td><td data-l="What good looks like">Each recorder tallies seedlings planted in their plot</td><td data-l="Owner">Ops intern</td><td data-l="Record">Tally per plot</td></tr>
+              <tr><td data-l="Phase">Day: plant</td><td data-l="Step"><b>Take photo-point pictures</b></td><td data-l="What good looks like">Same position and direction on every visit, plot ID in the file name</td><td data-l="Owner">Ops intern</td><td data-l="Record">Photo log</td></tr>
+              <tr><td data-l="Phase">Day: plant</td><td data-l="Step"><b>Collect polybags and ties</b></td><td data-l="What good looks like">Bags out equals bags back</td><td data-l="Owner">Everyone</td><td data-l="Record">Bag count</td></tr>
+              <tr><td data-l="Phase">Close-out (same day)</td><td data-l="Step"><b>Three-way seedling count</b></td><td data-l="What good looks like">Delivered = planted + spare returned + rejected; signed by field lead and partner lead</td><td data-l="Owner">Ops intern</td><td data-l="Record">Signed tally</td></tr>
+              <tr><td data-l="Phase">Close-out (same day)</td><td data-l="Step"><b>Enter the data and run the checks</b></td><td data-l="What good looks like">Rows entered the same day, paper sheets photographed, QA flags at zero</td><td data-l="Owner">Ops intern</td><td data-l="Record">Planting_Log and Monitoring rows</td></tr>
+              <tr><td data-l="Phase">Follow-up</td><td data-l="Step"><b>Census at months 1, 3, 6 and 12</b></td><td data-l="What good looks like">Replanting by the agreed terms when stocking falls below the trigger</td><td data-l="Owner">Science team + partner</td><td data-l="Record">Monitoring rows, Plot_Status actions</td></tr>
+              <tr><td data-l="Phase">Follow-up</td><td data-l="Step"><b>Pay the partner group on the agreed date and share results back</b></td><td data-l="What good looks like">Payment logged; results explained to the group in a short session</td><td data-l="Owner">Ops lead + finance</td><td data-l="Record">Payment log, session note</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Why the tide and the zone come first: mangroves grow where the tide floods them for only part of the time, and planting below that zone is a common reason restoration fails (Lewis, 2005, <i>Ecological Engineering</i> 24: 403-418).</p>
+      </div>
+
+      <div class="panel">
+        <h3>Work sample: risk register</h3>
+        <p class="meta">Likelihood and severity from 1 (low) to 3 (high) · score = likelihood x severity · 6 or 9 High, 3 or 4 Medium, 1 or 2 Low</p>
+        <div class="table-wrap stack-wrap small-table">
+          <table class="stack-sm">
+            <thead><tr><th>ID</th><th>Risk</th><th class="num">L x S</th><th>Rating</th><th>Control before the day</th><th>Control on the day</th><th>Owner</th><th>Early warning</th></tr></thead>
+            <tbody>
+              <tr><td data-l="ID">R01</td><td data-l="Risk"><b>Seedlings planted in the wrong zone (too low, flooded too long)</b><br><span style="color:var(--muted)">Site chosen by convenience, not by flooding</span></td><td class="num" data-l="L x S">2 x 3 = 6</td><td data-l="Rating"><span class="rate high">High</span></td><td data-l="Before the day">Compare elevation and flooding with nearby natural mangroves; pilot plot before scaling</td><td data-l="On the day">Plant only inside the marked zone</td><td data-l="Owner">Science team</td><td data-l="Early warning">Month-1 losses above 20% in the lowest plots</td></tr>
+              <tr><td data-l="ID">R02</td><td data-l="Risk"><b>Tide window missed</b><br><span style="color:var(--muted)">Ceremony or boat delay</span></td><td class="num" data-l="L x S">2 x 3 = 6</td><td data-l="Rating"><span class="rate high">High</span></td><td data-l="Before the day">Schedule from the tide table; ceremony after planting or kept short</td><td data-l="On the day">Hard stop time announced at the briefing</td><td data-l="Owner">Field lead</td><td data-l="Early warning">Start delayed by more than 30 minutes</td></tr>
+              <tr><td data-l="ID">R03</td><td data-l="Risk"><b>Wave exposure and scour on open fringe</b><br><span style="color:var(--muted)">Exposed plots, no shelter</span></td><td class="num" data-l="L x S">2 x 3 = 6</td><td data-l="Rating"><span class="rate high">High</span></td><td data-l="Before the day">Plant sheltered zones first, behind wave breakers where they exist; stake seedlings</td><td data-l="On the day">Check stakes and ties before leaving</td><td data-l="Owner">Science team</td><td data-l="Early warning">Missing counts rising at month 1</td></tr>
+              <tr><td data-l="ID">R04</td><td data-l="Risk"><b>Barnacle load and debris on stems</b><br><span style="color:var(--muted)">Low maintenance between visits</span></td><td class="num" data-l="L x S">2 x 2 = 4</td><td data-l="Rating"><span class="rate medium">Medium</span></td><td data-l="Before the day">Monthly cleaning duty written into the partner agreement</td><td data-l="On the day">Show cleaning method at the briefing</td><td data-l="Owner">Partner lead</td><td data-l="Early warning">Barnacles named as main cause at a census</td></tr>
+              <tr><td data-l="ID">R05</td><td data-l="Risk"><b>Poor seedling quality</b><br><span style="color:var(--muted)">Too young, damaged or diseased stock</span></td><td class="num" data-l="L x S">2 x 2 = 4</td><td data-l="Rating"><span class="rate medium">Medium</span></td><td data-l="Before the day">Nursery check on T-1 with written reject criteria; 10% spare</td><td data-l="On the day">Recorder sets aside rejected seedlings</td><td data-l="Owner">Science team</td><td data-l="Early warning">Rejection rate above 10%</td></tr>
+              <tr><td data-l="ID">R06</td><td data-l="Risk"><b>Counts do not reconcile (delivered, planted, reported)</b><br><span style="color:var(--muted)">Tally errors, late data entry</span></td><td class="num" data-l="L x S">2 x 3 = 6</td><td data-l="Rating"><span class="rate high">High</span></td><td data-l="Before the day">One recorder per plot; tally sheets printed</td><td data-l="On the day">Three-way count signed; same-day entry with QA checks</td><td data-l="Owner">Ops intern</td><td data-l="Early warning">QA flags on entry</td></tr>
+              <tr><td data-l="ID">R07</td><td data-l="Risk"><b>Plot cannot be found again</b><br><span style="color:var(--muted)">No marker, GPS drift, photo point not fixed</span></td><td class="num" data-l="L x S">2 x 2 = 4</td><td data-l="Rating"><span class="rate medium">Medium</span></td><td data-l="Before the day">Fixed markers, waypoint ID and photo point for every plot</td><td data-l="On the day">Photo of each marker</td><td data-l="Owner">Ops intern</td><td data-l="Early warning">Census note: plot not located</td></tr>
+              <tr><td data-l="ID">R08</td><td data-l="Risk"><b>Partner group unclear on roles or payment</b><br><span style="color:var(--muted)">Terms agreed verbally only</span></td><td class="num" data-l="L x S">2 x 3 = 6</td><td data-l="Rating"><span class="rate high">High</span></td><td data-l="Before the day">Written agreement in Bahasa Indonesia; named contact; payment date</td><td data-l="On the day">Repeat the terms at the briefing</td><td data-l="Owner">Ops lead</td><td data-l="Early warning">Maintenance visits missed</td></tr>
+              <tr><td data-l="ID">R09</td><td data-l="Risk"><b>Grazing, trampling or human disturbance</b><br><span style="color:var(--muted)">Livestock or foot traffic near the site</span></td><td class="num" data-l="L x S">1 x 2 = 2</td><td data-l="Rating"><span class="rate low">Low</span></td><td data-l="Before the day">Agree signs or simple fencing with the village where livestock roam</td><td data-l="On the day">Mark planted rows clearly</td><td data-l="Owner">Partner lead</td><td data-l="Early warning">Grazing named as main cause</td></tr>
+              <tr><td data-l="ID">R10</td><td data-l="Risk"><b>Injury: cuts, slips, heat, boat transfer</b><br><span style="color:var(--muted)">Mud, shells, sun, small boats</span></td><td class="num" data-l="L x S">1 x 3 = 3</td><td data-l="Rating"><span class="rate medium">Medium</span></td><td data-l="Before the day">PPE list, first-aid kit, life jackets, buddy system</td><td data-l="On the day">Safety briefing; water breaks</td><td data-l="Owner">Field lead</td><td data-l="Early warning">Any near-miss reported</td></tr>
+              <tr><td data-l="ID">R11</td><td data-l="Risk"><b>Bad weather or high waves</b><br><span style="color:var(--muted)">Season, storms</span></td><td class="num" data-l="L x S">2 x 2 = 4</td><td data-l="Rating"><span class="rate medium">Medium</span></td><td data-l="Before the day">Marine forecast check; go or no-go by 06:00; backup date</td><td data-l="On the day">Stop work if waves or lightning</td><td data-l="Owner">Field lead</td><td data-l="Early warning">Forecast warning issued</td></tr>
+              <tr><td data-l="ID">R12</td><td data-l="Risk"><b>Plastic left on site</b><br><span style="color:var(--muted)">Polybags and ties dropped</span></td><td class="num" data-l="L x S">2 x 1 = 2</td><td data-l="Rating"><span class="rate low">Low</span></td><td data-l="Before the day">Bag count planned</td><td data-l="On the day">Bags out equals bags back</td><td data-l="Owner">Everyone</td><td data-l="Early warning">Bag count short</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid g2">
+        <div class="panel">
+          <h3>A HACCP plan I wrote alone</h3>
+          <p class="meta">Makin Ahli "Penyusunan Dokumen HACCP", Batch 35, August 2026 · 21 pages · bottled chilli sauce case</p>
+          <ul class="dots">
+            <li>Four critical control points, each with a limit, a check, a correction and a record: cooking at 90 &deg;C or more for at least 10 minutes; acidification to pH 4.0 or below (garlic can carry <i>Clostridium botulinum</i> spores); hot filling at 88 &deg;C or more with inversion; and X-ray inspection.</li>
+            <li>X-ray, not a metal detector, because the metal lid would trip a detector on every bottle and a detector cannot see glass in glass. Choosing the control that fits the site is the same judgement a planting SOP needs.</li>
+          </ul>
+          <div class="chips"><span class="chip">GMP</span><span class="chip">HACCP</span><span class="chip">HACCP documentation</span><span class="chip">ISO 22000:2018</span><span class="chip">FSSC 22000 v7.0</span><span class="chip">QA in food industry</span><span class="chip">QC in food industry</span></div>
+        </div>
+        <div class="panel">
+          <h3>Procedures other people follow</h3>
+          <p class="meta">Co-Asisten Praktikum, Department of Agricultural and Biosystems Engineering, UGM · 5 appointments recorded in the Diploma Supplement, Jan 2024 to Jul 2025</p>
+          <ul class="dots">
+            <li>Briefed every group on procedure and laboratory safety before each session, for about 95 students per cohort.</li>
+            <li>Courses included Measurement and Instrumentation Engineering, where calibration and data recording were the content, and Electricity and Electronics.</li>
+            <li>Graded every report against one rubric.</li>
+          </ul>
+          <p class="note">RainPurify (1st place, ROOTS SDGs 2025, team leader): the operating guide set filter replacement and sensor recalibration in writing, because a filter that is never changed stops filtering long before anyone notices.</p>
+        </div>
+      </div>
+    </div>
+
+    <nav class="pager" aria-label="Previous section">
+      <a href="#science" data-go="science"><small>Previous</small><b>Carbon &amp; Science</b></a>
+      <a class="next" href="#overview" data-go="overview"><small>Back to</small><b>Overview</b></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>Les' Aullian Achmad Argito</h2>
+    <p>Jagakarsa, South Jakarta · available now, at the Jakarta office and on project sites at short notice</p>
+    <p><a href="mailto:lesargito@gmail.com">lesargito@gmail.com</a> · <a href="https://www.linkedin.com/in/lesaullianachmadargito/" target="_blank" rel="noopener">linkedin.com/in/lesaullianachmadargito</a> · <a href="https://github.com/lesaullianachmadargito" target="_blank" rel="noopener">github.com/lesaullianachmadargito</a></p>
+    <p class="small">An independent job-application portfolio, not affiliated with or endorsed by CarbonEthics. The three work samples use illustrative data generated for this page and describe no real site, partner or client. Student ID numbers, signatures and villagers' faces are not shown on this public page. Figures elsewhere come from my own certificates, reports and project files, available on request.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var views = Array.prototype.slice.call(document.querySelectorAll(".view"));
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+  var ink = document.querySelector(".tabs .ink");
+  var nav = document.querySelector(".tabs");
+  var bgA = document.getElementById("bgA"), bgB = document.getElementById("bgB");
+  var front = bgA, current = null;
+  var baseTitle = "Les' Aullian Achmad Argito · Operations & Science Portfolio";
+  var ids = views.map(function (v) { return v.id; });
+
+  function moveInk(instant) {
+    var t = document.querySelector('.tab[aria-current="page"]');
+    if (!t || !ink) return;
+    if (instant) ink.style.transition = "none";
+    ink.style.left = t.offsetLeft + "px";
+    ink.style.width = t.offsetWidth + "px";
+    if (instant) { void ink.offsetWidth; ink.style.transition = ""; }
+  }
+  function setBg(url) {
+    if (front.style.backgroundImage.indexOf(url) !== -1) return;
+    var back = front === bgA ? bgB : bgA;
+    back.style.backgroundImage = "url('" + url + "')";
+    back.classList.add("on");
+    front.classList.remove("on");
+    front = back;
+  }
+  function show(id, push) {
+    if (ids.indexOf(id) === -1) id = "overview";
+    var changed = id !== current;
+    views.forEach(function (v) { v.hidden = v.id !== id; });
+    tabs.forEach(function (t) {
+      if (t.getAttribute("data-go") === id) t.setAttribute("aria-current", "page");
+      else t.removeAttribute("aria-current");
+    });
+    var v = document.getElementById(id);
+    document.body.setAttribute("data-view", id);
+    setBg(v.getAttribute("data-bg"));
+    moveInk(current === null);
+    var active = document.querySelector('.tab[aria-current="page"]');
+    if (active && nav.scrollWidth > nav.clientWidth) {
+      nav.scrollTo({ left: active.offsetLeft - (nav.clientWidth - active.offsetWidth) / 2, behavior: "smooth" });
+    }
+    document.title = (id === "overview" ? "" : v.getAttribute("data-title") + " · ") + baseTitle;
+    if (push && location.hash !== "#" + id) history.pushState(null, "", "#" + id);
+    if (changed && current !== null) window.scrollTo(0, 0);
+    current = id;
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("[data-go]") : null;
+    if (!a) return;
+    e.preventDefault();
+    show(a.getAttribute("data-go"), true);
+    var h = document.querySelector("#" + a.getAttribute("data-go") + " h1, #" + a.getAttribute("data-go") + " h2");
+    if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
+  });
+  window.addEventListener("popstate", function () { show(location.hash.slice(1), false); });
+  window.addEventListener("resize", function () { moveInk(true); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { moveInk(true); });
+  window.addEventListener("load", function () { moveInk(true); });
+  views.forEach(function (v) { var i = new Image(); i.src = v.getAttribute("data-bg"); });
+  show(location.hash.slice(1), false);
+})();
+</script>
+<noscript><style>.tabs .ink { display: none; } .tab[aria-current="page"] { color: #fff; }</style></noscript>
+</body>
+</html>
